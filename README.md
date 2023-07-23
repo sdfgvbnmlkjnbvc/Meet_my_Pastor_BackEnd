@@ -15,7 +15,7 @@
 
 
 #Appointment Details
- -Phone Number
- -Id Number
- -Names
- -Reason for Appointment
+ - Phone Number
+ - Id Number
+ - Names
+ - Reason for Appointment
