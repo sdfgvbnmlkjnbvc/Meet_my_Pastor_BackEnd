@@ -12,3 +12,10 @@
 | !STARTED |     post     | base_URL+              |
 | !STARTED |     post     | base_URL+appointment   |
 | !STARTED |     GET      | base_URL+appointments  |
+
+
+#Appointment Details
+Phone Number
+Id Number
+Names
+Reason for Appointment
