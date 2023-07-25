@@ -6,10 +6,10 @@
 |!STARTED  |     GET      |  base_URL+fetch_alluser|
 | !STARTED |     POST     | base_URL+login         |
 |!STARTED  |     GET      | base_URL+user          |
-| !STARTED |     post     | base_URL+              |
-| !STARTED |     GET      | base_URL+              |
-| !STARTED |     post     | base_URL+              |
-| !STARTED |     post     | base_URL+              |
+| !STARTED |     post     | base_URL+register      |
+| !STARTED |     GET      | base_URL+fetch_allpasto|
+| !STARTED |     post     | base_URL+appo_category |
+| !STARTED |     GET      | base_URL+appo_category |
 | !STARTED |     post     | base_URL+appointment   |
 | !STARTED |     GET      | base_URL+appointments  |
 
