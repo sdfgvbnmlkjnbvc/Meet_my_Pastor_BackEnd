@@ -26,8 +26,8 @@
 
    
 #Registration Form
- -First Name
- -Last Name
- -Phone Number
- -Email
- -Category(Church Member or Pastor)
+ - First Name
+ - Last Name
+ - Phone Number
+ - Email
+ - Category(Church Member or Pastor)
