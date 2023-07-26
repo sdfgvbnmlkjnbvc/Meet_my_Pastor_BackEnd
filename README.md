@@ -14,14 +14,18 @@
 | !STARTED |     GET      | base_URL+appointments  |
 
 
-#Appointment Details
- - Phone Number
- - Id Number
- - Names
- - Reason for Appointment
+
 
 #Appointment Details
- - Phone Number
- - Id Number
- - Names
+ - Appointment ID
+ - User ID
+ - User Names
+ - Pastor's Name
  - Reason for Appointment
+ - Email
+#Registration Form
+ -First Name
+ -Last Name
+ -Phone Number
+ -Email
+ -Category(Church Member or Pastor)
