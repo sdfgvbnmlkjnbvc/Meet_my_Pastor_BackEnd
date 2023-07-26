@@ -19,3 +19,9 @@
  - Id Number
  - Names
  - Reason for Appointment
+
+#Appointment Details
+ - Phone Number
+ - Id Number
+ - Names
+ - Reason for Appointment
