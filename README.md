@@ -30,4 +30,23 @@
  - Last Name
  - Phone Number
  - Email
- - Category(Church Member or Pastor)
+ - Password
+ - Confirm Password
+#Login
+ - Email
+ - Password
+#Contact Us
+ - First Name
+ - Last Name
+ - Phone Number
+ - Email
+#Reports
+ - Number of Church Members a Pastor have received so far
+#Testmonies
+ - Username
+ - Message For Testimony
+
+
+ 
+   
+
