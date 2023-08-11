@@ -44,6 +44,7 @@
  - Last Name
  - Phone Number
  - Email
+ - Message
 
 
 #Reports
@@ -52,7 +53,18 @@
 
 #Testmonies
  - Username
+ - Date
  - Message For Testimony
+
+#Event
+ - Event Name
+ - Date & Time
+ - Location
+#Admin
+ - Add Pastor
+ - Manage Appointments
+ - Add Testimony
+ - Add Event
 
 
  
