@@ -60,6 +60,8 @@
  - Event Name
  - Date & Time
  - Location
+
+
 #Admin
  - Add Pastor
  - Manage Appointments
