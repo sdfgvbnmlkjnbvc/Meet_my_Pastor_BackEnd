@@ -1,7 +1,16 @@
-flask 
-python-dotenv
-psycopg2-binary
-flask-bcrypt
-flask-sqlalchemy
-Werkzeug
-pyjwt
+click==8.1.3
+Flask==2.2.2
+gunicorn==20.0.4
+itsdangerous==2.1.2
+Jinja2==3.1.2
+MarkupSafe==2.1.1
+Werkzeug==2.2.2
+PyJWT==2.6.0
+python-dotenv==0.21.0
+psycopg2-binary==2.9.5
+Flask-Bcrypt==1.0.1
+Flask-SQLAlchemy==3.0.2
+SQLAlchemy==1.4.46
+flask-cors
+
+# insert into user values(2,"8efea8c7-1821-451b-b312-5a597d7af3a1F","https://drive.google.com/file/d/1a4ZULf9YxuDmWdfjcIZtCyuL423AyoiM/view?usp=sharing","Nana Kwame","password","0543787887","akuetteh58@gmail.com",1);
