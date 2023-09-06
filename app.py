@@ -1,5 +1,6 @@
 import datetime
 from flask import Flask,request,jsonify
+from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 import os
 from werkzeug.security import check_password_hash,generate_password_hash
@@ -13,7 +14,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] ='sqlite:///'+os.path.join(basedir,'dataBa
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
 
 db=SQLAlchemy(app)
-
+CORS(app,resources={r"/api/*": {"origins": "*"}},allowed_methods=['POST','GET'])
 class User(db.Model):
     id=db.Column(db.Integer,primary_key=True, autoincrement=True)
     public_id=db.Column(db.String(50),unique=True)
