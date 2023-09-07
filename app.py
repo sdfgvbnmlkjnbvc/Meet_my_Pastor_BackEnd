@@ -24,10 +24,10 @@ class User(db.Model):
     contact=db.Column(db.String(80))
     email=db.Column(db.String(80),unique=True)
     admin=db.Column(db.Boolean)
-    # Todo=db.relationship('Appointment',backref='user',uselist=False)
-    # Todo=db.relationship('pastor',backref='user',uselist=False)
-    # Todo=db.relationship('Testimonies',backref='user',uselist=False)
-    # Todo=db.relationship('Report',backref='user',uselist=False)
+    Todo=db.relationship('Appointment',backref='user',uselist=False)
+    Todo=db.relationship('pastor',backref='user',uselist=False)
+    Todo=db.relationship('Testimonies',backref='user',uselist=False)
+    Todo=db.relationship('Report',backref='user',uselist=False)
     
    
 
@@ -46,7 +46,22 @@ class User(db.Model):
 
 
     
-    
+class pastor(db.Model):
+    Pastor_id=db.Column(db.Integer,primary_key=True)
+    user_id=db.Column(db.String(50),db.ForeignKey('user.public_id'))
+    Pastor_Name=db.Column(db.String(50))
+    title=db.Column(db.String(50))
+    Contact=db.Column(db.String(50))
+    Image=db.Column(db.String(50))
+
+
+    def __init__(self,user_id,Pastor_Name,title,Contact,Image):
+        self.Pastor_Name=Pastor_Name
+        self.title=title
+        self.Contact=Contact
+        self.user_id=user_id
+        self.Image=Image
+        
 
 class Appointment(db.Model):
     Appointment_id=db.Column(db.Integer,primary_key=True)
@@ -55,15 +70,19 @@ class Appointment(db.Model):
     Pastor=db.Column(db.String(50))
     Reason=db.Column(db.String(50))
     Email=db.Column(db.String(50))
+    Date=db.Column(db.String(50))
+    ATime=db.Column(db.String(50))
     
 
 
-    def __init__(self,User_Name,Pastor,Reason,Email,user_id):
+    def __init__(self,user_id,User_Name,Pastor,Reason,Email,Date,ATime):
         self.User_Name=User_Name
         self.Pastor=Pastor
         self.Reason=Reason
         self.Email=Email
         self.user_id=user_id
+        self.Date=Date
+        self.ATime=ATime
         
 
 class Contact(db.Model):
@@ -89,11 +108,7 @@ class Contact(db.Model):
 class Report(db.Model):
     id=db.Column(db.Integer,primary_key=True)
     user_id=db.Column(db.String(50),db.ForeignKey('user.public_id'))
-    # message=db.Column(db.String(100))
 
-    # def __init__(self,user_id,message) :
-    #     self.user_id=user_id
-    #     self.message=message
  
 
 class Testimonies(db.Model):
@@ -166,7 +181,31 @@ def login():
     return jsonify({'status':401,"msg":'could wrong credentials'}),401
 # STATUS,MSG,USER DATA,ATH TOKEN
     
-   
+@app.post("/api/pastor")
+def create_user():
+    data=request.get_json() 
+    user_id=data["user-id"]
+    Pastor_Name=data["Pastor-Name"]
+    title=data["title"]
+    Contact=data['Contact']
+    Image=data['Image']
+
+    print(data)
+    new_pastor=pastor(Pastor_id=str(uuid.uuid4()),Pastor_Name=Pastor_Name,user_id=user_id,title=title,Contact=Contact,Image=Image)
+    try:
+
+      
+        db.session.add(new_pastor)
+        db.session.commit()
+        return jsonify({'status':201,
+            "msg":"New pastor created"
+        }),201
+    
+    except  Exception as e:
+        return jsonify({'status':404,
+            'msg':"pastor already exist",
+            "body-error":e
+        }),404
 
 @app.post("/api/")
 def Event():
@@ -188,8 +227,58 @@ def Event():
         }),404
     
 
+@app.post("/api/appointment")
+def login():  
+    data=request.get_json()
+    name=data["name"]
+    email=data["email"]
+    reason=data['reason']
+    time=data["time"]
+    date=data["date"]
+    pastor=data['pastor']
+    user_id=data['user-id']
+    print(data)
+    
+    
+    new_appoint=Appointment(user_id=user_id,name=name,Email=email,Date=date,ATime=time,Pastor=pastor,Reason=reason)
+    try:
 
+      
+        db.session.add(new_appoint)
+        db.session.commit()
+        return jsonify({'status':201,
+            "msg":"New user created"
+        }),201
+    
+    except  Exception as e:
+        return jsonify({'status':404,
+            'msg':"email already exist",
+            "body-error":e
+        }),404
+    
+    
 
+@app.get("/api/pastors")
+def  all_user():
+    pastor=pastor.query.all()
+    print(pastor)
+    output=[]
+    for pastor in pastor:
+        pastorData={}
+        pastorData['user_id'] = pastor.user_id
+        pastorData['Pastor_id'] = pastor.Pastor_id
+        pastorData['name']=pastor.Pastor_Name
+        pastorData['title']=pastor.title
+        pastorData['Contact']=pastor.COntact
+        pastorData['Iamge']=pastor.Image
+        output.append(pastorData)
+
+    return jsonify(
+        {
+            'status':200,'pastor':output
+        }
+    ),200
+    
     
 @app.get("/api/users")
 def  all_user():
