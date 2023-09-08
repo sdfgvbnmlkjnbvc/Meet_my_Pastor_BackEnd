@@ -243,14 +243,14 @@ def appointment():
     print(data)
     
     
-    new_appoint=Appointment(user_id=user_id,name=name,Email=email,Date=date,ATime=time,Pastor=pastor,Reason=reason)
+    new_appoint=Appointment(user_id=user_id,User_Name=name,Email=email,Date=date,ATime=time,Pastor=pastor,Reason=reason)
     try:
 
       
         db.session.add(new_appoint)
         db.session.commit()
         return jsonify({'status':201,
-            "msg":"New user created"
+            "msg":"New Appointment created"
         }),201
     
     except  Exception as e:
