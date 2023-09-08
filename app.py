@@ -46,8 +46,9 @@ class User(db.Model):
 
 
     
-class pastor(db.Model):
-    Pastor_id=db.Column(db.Integer,primary_key=True)
+class Pastor(db.Model):
+    id=db.Column(db.Integer,primary_key=True, autoincrement=True)
+    Pastor_id=db.Column(db.String(50),unique=True)
     user_id=db.Column(db.String(50),db.ForeignKey('user.public_id'))
     Pastor_Name=db.Column(db.String(50))
     title=db.Column(db.String(50))
@@ -55,12 +56,14 @@ class pastor(db.Model):
     Image=db.Column(db.String(50))
 
 
-    def __init__(self,user_id,Pastor_Name,title,Contact,Image):
+    def __init__(self,Pastor_id,user_id,Pastor_Name,title,Contact,Image):
         self.Pastor_Name=Pastor_Name
+        self.Pastor_id=Pastor_id
         self.title=title
         self.Contact=Contact
         self.user_id=user_id
         self.Image=Image
+
         
 
 class Appointment(db.Model):
@@ -182,7 +185,7 @@ def login():
 # STATUS,MSG,USER DATA,ATH TOKEN
     
 @app.post("/api/pastor")
-def create_user():
+def create_pastor():
     data=request.get_json() 
     user_id=data["user-id"]
     Pastor_Name=data["Pastor-Name"]
@@ -191,7 +194,7 @@ def create_user():
     Image=data['Image']
 
     print(data)
-    new_pastor=pastor(Pastor_id=str(uuid.uuid4()),Pastor_Name=Pastor_Name,user_id=user_id,title=title,Contact=Contact,Image=Image)
+    new_pastor=Pastor(Pastor_id=str(uuid.uuid4()),Pastor_Name=Pastor_Name,user_id=user_id,title=title,Contact=Contact,Image=Image)
     try:
 
       
@@ -228,7 +231,7 @@ def Event():
     
 
 @app.post("/api/appointment")
-def login():  
+def appointment():  
     data=request.get_json()
     name=data["name"]
     email=data["email"]
@@ -259,8 +262,8 @@ def login():
     
 
 @app.get("/api/pastors")
-def  all_user():
-    pastor=pastor.query.all()
+def  all_pastors():
+    pastor=Pastor.query.all()
     print(pastor)
     output=[]
     for pastor in pastor:
@@ -269,8 +272,8 @@ def  all_user():
         pastorData['Pastor_id'] = pastor.Pastor_id
         pastorData['name']=pastor.Pastor_Name
         pastorData['title']=pastor.title
-        pastorData['Contact']=pastor.COntact
-        pastorData['Iamge']=pastor.Image
+        pastorData['Contact']=pastor.Contact
+        pastorData['Image']=pastor.Image
         output.append(pastorData)
 
     return jsonify(
