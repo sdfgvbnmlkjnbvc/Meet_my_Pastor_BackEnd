@@ -1,0 +1,168 @@
+{
+    "info": {
+        "_postman_id": "87bdd364-0719-406c-a732-5ce464e5868d",
+        "name": "Meet_MY_pastor_Collection",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": ""
+    },
+    "item": [
+        {
+            "name": "Register",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "https://meet-my-pastor.onrender.com/api/user",
+                    "path": [
+                        "api",
+                        "user"
+                    ],
+                    "protocol": "https",
+                    "host": [
+                        "meet-my-pastor",
+                        "onrender",
+                        "com"
+                    ]
+                },
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\"name\":\"admin\",\n    \"email\":\"test@admin.com\",\n    \"contact\":\"0543787887\",\n    \"password\":\"Admin@1234\"\n\n}"
+                }
+            }
+        },
+        {
+            "name": "login",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "http://127.0.0.1:5000/api/login",
+                    "path": [
+                        "api",
+                        "login"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "5000"
+                },
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": " {\"email\":\"admin@admin.com\",\r\n    \"password\":\"password\"}"
+                }
+            }
+        },
+        {
+            "name": "Pastor",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "http://127.0.0.1:5000/api/pastors",
+                    "path": [
+                        "api",
+                        "pastors"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "5000"
+                }
+            }
+        },
+        {
+            "name": "add pastor",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "https://meet-my-pastor.onrender.com/api/pastor",
+                    "path": [
+                        "api",
+                        "pastor"
+                    ],
+                    "protocol": "https",
+                    "host": [
+                        "meet-my-pastor",
+                        "onrender",
+                        "com"
+                    ]
+                },
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\n  \"user-id\":\"5f8e7fc5-1508-4bca-8706-041193680363\",\n \"Pastor-Name\":\"Nhana Qwahme\",\n    \"Contact\":\"0543787887\",\n    \"title\":\"Apostle\",\n    \"Image\":\"https://live.staticflickr.com/65535/52865825745_0262283cb7_h.jpg\"\n}\n// Pastor_id=str(uuid.uuid4()),Pastor_Name=Pastor_Name,user_id=user_id,title=title,Contact=Contact,Image=Image"
+                }
+            }
+        },
+        {
+            "name": "All users",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "http://127.0.0.1:5000/api/users",
+                    "path": [
+                        "api",
+                        "users"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "5000"
+                }
+            }
+        },
+        {
+            "name": "book Appointment",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "http://127.0.0.1:5000/api/appointment",
+                    "path": [
+                        "api",
+                        "appointment"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "5000"
+                },
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\n  \"user-id\":\"5f8e7fc5-1508-4bca-8706-041193680363\",\n  \"name\":\"Nhana Qwahme\",\n  \"email\":\"akuetteh58@gmail.com\",\n  \"date\":\"12-65-99\",\n  \"time\":\"12:13\",\n  \"pastor\":\"Apostle\",\n  \"reason\":\"hi\"\n  \n}"
+                }
+            }
+        }
+    ]
+}
