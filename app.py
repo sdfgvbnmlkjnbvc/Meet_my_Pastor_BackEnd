@@ -104,9 +104,6 @@ class Contact(db.Model):
 
 
 
-        
-    
-   
 
 class Report(db.Model):
     id=db.Column(db.Integer,primary_key=True)
@@ -116,8 +113,44 @@ class Report(db.Model):
 
 class Testimonies(db.Model):
     id=db.Column(db.Integer,primary_key=True)
-    user_id=db.Column(db.String(50),db.ForeignKey('user.public_id'))
+    testimony_id=db.Column(db.String(50))
+    image=db.Column(db.String(50))
+    name=db.Column(db.String(50))
+    date=db.Column(db.String(50))
     message=db.Column(db.String(100))
+
+    
+    def __init__(self,testimony_id,image,name,date,message):
+        self.name=name
+        self.image=image
+        self.date=date
+        self.message=message
+        self.testimony_id=testimony_id
+
+
+class Event(db.Model):
+    id=db.Column(db.Integer,primary_key=True)
+    event_id=db.Column(db.String(50))
+    image=db.Column(db.String(50))
+    name=db.Column(db.String(50))
+    date=db.Column(db.String(50))
+    time=db.Column(db.String(50))
+    location=db.Column(db.String(50))
+    eventDescription=db.Column(db.String(100))
+
+    
+    def __init__(self,event_id,image,name,date,time,location,eventDescription):
+        self.name=name
+        self.image=image
+        self.date=date
+        self.time=time
+        self.location=location
+        self.eventDescription=eventDescription
+        self.event_id=event_id
+
+
+
+
 
 
 
@@ -183,6 +216,106 @@ def login():
         return jsonify({'status':200,'auth_token':token,"user":userData})
     return jsonify({'status':401,"msg":'could wrong credentials'}),401
 # STATUS,MSG,USER DATA,ATH TOKEN
+# Testmonies
+# Username
+# Date
+# Message For Testimony
+
+@app.post("/api/testimony")
+def create_testimony():
+    data=request.get_json() 
+    name=data["name"]
+    message=data["message"]
+    date=data['date']
+    Image=data['Image']
+
+
+    print(data)
+    tesimony=Testimonies(testimony_id=str(uuid.uuid4()),name=name,message=message,date=date,image=Image)
+    try:
+
+      
+        db.session.add(tesimony)
+        db.session.commit()
+        return jsonify({'status':201,
+            "msg":"New pastor created"
+        }),201
+    
+    except  Exception as e:
+        return jsonify({'status':404,
+            'msg':"pastor already exist",
+            "body-error":e
+        }),404
+
+
+@app.get("/api/testimonies")
+def  all_testimonies():
+    pastor=Testimonies.query.all()
+    print(pastor)
+    output=[]
+    for pastor in pastor:
+        pastorData={}
+        pastorData['user_id'] = pastor.user_id
+        pastorData['Pastor_id'] = pastor.Pastor_id
+        pastorData['name']=pastor.Pastor_Name
+        pastorData['title']=pastor.title
+        pastorData['Contact']=pastor.Contact
+        pastorData['Image']=pastor.Image
+        output.append(pastorData)
+
+    return jsonify(
+        {
+            'status':200,'pastor':output
+        }
+    ),200
+    
+@app.post("/api/event")
+def create_event():
+    data=request.get_json() 
+    name=data["name"]
+    message=data["message"]
+    date=data['date']
+    Image=data['Image']
+
+
+    print(data)
+    event=Event(event_id=str(uuid.uuid4()),name=name,message=message,date=date,image=Image)
+    try:
+
+      
+        db.session.add(event)
+        db.session.commit()
+        return jsonify({'status':201,
+            "msg":"New pastor created"
+        }),201
+    
+    except  Exception as e:
+        return jsonify({'status':404,
+            'msg':"pastor already exist",
+            "body-error":e
+        }),404
+
+
+@app.get("/api/events")
+def  all_events():
+    pastor=Event.query.all()
+    print(pastor)
+    output=[]
+    for pastor in pastor:
+        pastorData={}
+        pastorData['user_id'] = pastor.user_id
+        pastorData['Pastor_id'] = pastor.Pastor_id
+        pastorData['name']=pastor.Pastor_Name
+        pastorData['title']=pastor.title
+        pastorData['Contact']=pastor.Contact
+        pastorData['Image']=pastor.Image
+        output.append(pastorData)
+
+    return jsonify(
+        {
+            'status':200,'pastor':output
+        }
+    ),200
     
 @app.post("/api/pastor")
 def create_pastor():
