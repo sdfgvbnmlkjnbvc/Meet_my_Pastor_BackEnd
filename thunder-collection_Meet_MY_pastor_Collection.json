@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "Meet_MY_pastor_Collection",
-    "dateExported": "2023-09-22T12:27:04.420Z",
+    "dateExported": "2023-09-26T09:43:26.872Z",
     "version": "1.1",
     "folders": [],
     "requests": [
@@ -128,13 +128,18 @@
             "colId": "f3c7d070-59f0-480f-b77e-5688ea1236d1",
             "containerId": "",
             "name": "Events",
-            "url": "https://meet-my-pastor.onrender.com/api/Events",
+            "url": "https://meet-my-pastor.onrender.com/api/event",
             "method": "POST",
             "sortNum": 100000,
             "created": "2023-09-22T12:12:02.394Z",
-            "modified": "2023-09-22T12:12:55.520Z",
+            "modified": "2023-09-26T09:11:49.397Z",
             "headers": [],
             "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n\"name\" :\"\",\n\"image\":\"\",\n\"date\":\"\",\n\"time\":\"\",\n\"location\":\"\",\n\"eventDescription\":\"\"\n\n\n}",
+                "form": []
+            },
             "tests": []
         },
         {
@@ -142,11 +147,11 @@
             "colId": "f3c7d070-59f0-480f-b77e-5688ea1236d1",
             "containerId": "",
             "name": "Testimony",
-            "url": "https://meet-my-pastor.onrender.com/api/testimony",
+            "url": "https://meet-my-pastor.onrender.com/api/testimonies",
             "method": "GET",
             "sortNum": 110000,
             "created": "2023-09-22T12:14:34.244Z",
-            "modified": "2023-09-22T12:14:49.335Z",
+            "modified": "2023-09-26T09:04:52.442Z",
             "headers": [],
             "params": [],
             "tests": []
@@ -156,13 +161,18 @@
             "colId": "f3c7d070-59f0-480f-b77e-5688ea1236d1",
             "containerId": "",
             "name": "Testimonies",
-            "url": "https://meet-my-pastor.onrender.com/api/testimonies",
+            "url": "https://meet-my-pastor.onrender.com/api/testimony",
             "method": "POST",
             "sortNum": 130000,
             "created": "2023-09-22T12:15:29.937Z",
-            "modified": "2023-09-22T12:15:49.173Z",
+            "modified": "2023-09-26T09:06:31.355Z",
             "headers": [],
             "params": [],
+            "body": {
+                "type": "json",
+                "raw": "\n{\n  \"name\":\"\",\n  \"message\":\"\",\n  \"date\":\"\",\n  \"Image\":\"\"\n}",
+                "form": []
+            },
             "tests": []
         },
         {
@@ -184,11 +194,11 @@
             "colId": "f3c7d070-59f0-480f-b77e-5688ea1236d1",
             "containerId": "",
             "name": "Contact us",
-            "url": "https://meet-my-pastor.onrender.com/api/contact",
+            "url": "https://meet-my-pastor.onrender.com/api/contacts",
             "method": "GET",
             "sortNum": 150000,
             "created": "2023-09-22T12:24:56.887Z",
-            "modified": "2023-09-22T12:25:10.876Z",
+            "modified": "2023-09-26T09:39:35.027Z",
             "headers": [],
             "params": [],
             "tests": []
@@ -198,13 +208,18 @@
             "colId": "f3c7d070-59f0-480f-b77e-5688ea1236d1",
             "containerId": "",
             "name": "contact us",
-            "url": "https://meet-my-pastor.onrender.com/api/contacts",
+            "url": "https://meet-my-pastor.onrender.com/api/contact",
             "method": "POST",
             "sortNum": 160000,
             "created": "2023-09-22T12:25:31.420Z",
-            "modified": "2023-09-22T12:26:32.279Z",
+            "modified": "2023-09-26T09:39:20.875Z",
             "headers": [],
             "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"user-id\":\"\",\n  \"FirstName\":\"\",\n  \"LastName\":\"\",\n  \"Phone\":\"\",\n  \"Email\":\"\",\n  \"Message\":\"\"\n  \n  \n}",
+                "form": []
+            },
             "tests": []
         }
     ]

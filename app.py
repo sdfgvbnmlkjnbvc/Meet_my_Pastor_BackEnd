@@ -97,8 +97,12 @@ class Contact(db.Model):
     Email=db.Column(db.String(50))
     Message=db.Column(db.String(50))
     
-    def __init__(self,user_id,Message) :
+    def __init__(self,user_id,FirstName,LastName,Phone,Email,Message,) :
         self.user_id=user_id
+        self.FirstName=FirstName
+        self.LastName=LastName
+        self.Phone=Phone
+        self.Email=Email
         self.Message=Message
   
 
@@ -215,11 +219,7 @@ def login():
         # print(token)
         return jsonify({'status':200,'auth_token':token,"user":userData})
     return jsonify({'status':401,"msg":'could wrong credentials'}),401
-# STATUS,MSG,USER DATA,ATH TOKEN
-# Testmonies
-# Username
-# Date
-# Message For Testimony
+
 
 @app.post("/api/testimony")
 def create_testimony():
@@ -273,47 +273,53 @@ def  all_testimonies():
 def create_event():
     data=request.get_json() 
     name=data["name"]
-    message=data["message"]
+    Image=data['image']
     date=data['date']
-    Image=data['Image']
+    time=data['time']
+    location=data["location"]
+    message=data["eventDescription"]
+    
+    
 
 
     print(data)
-    event=Event(event_id=str(uuid.uuid4()),name=name,message=message,date=date,image=Image)
+    event=Event(event_id=str(uuid.uuid4()),name=name,eventDescription=message,date=date,image=Image,location=location,time=time)
     try:
 
       
         db.session.add(event)
         db.session.commit()
         return jsonify({'status':201,
-            "msg":"New pastor created"
+            "msg":"New Event created"
         }),201
     
     except  Exception as e:
         return jsonify({'status':404,
-            'msg':"pastor already exist",
+            'msg':"Event already exist",
             "body-error":e
         }),404
 
 
 @app.get("/api/events")
 def  all_events():
-    pastor=Event.query.all()
-    print(pastor)
+    event=Event.query.all()
+    print(event)
     output=[]
-    for pastor in pastor:
-        pastorData={}
-        pastorData['user_id'] = pastor.user_id
-        pastorData['Pastor_id'] = pastor.Pastor_id
-        pastorData['name']=pastor.Pastor_Name
-        pastorData['title']=pastor.title
-        pastorData['Contact']=pastor.Contact
-        pastorData['Image']=pastor.Image
-        output.append(pastorData)
+    for event in event:
+        eventData={}
+       
+        eventData['event_id'] = event.event_id
+        eventData['name']=event.event_Name
+        eventData['Image']=event.Image
+        eventData['date']=event.date
+        eventData['time']=event.time
+        eventData['location']=event.location
+        eventData['eventDescription']=event.eventDescription
+        output.append(eventData)
 
     return jsonify(
         {
-            'status':200,'pastor':output
+            'status':200,'event':output
         }
     ),200
     
@@ -343,11 +349,17 @@ def create_pastor():
             "body-error":e
         }),404
 
-@app.post("/api/")
-def Event():
+@app.post("/api/contact")
+def Contact():
     data=request.get_json()
+    user_id=data["user-id"]
+    FirstName=data["FirstName"]
+    LastName=data["LastName"]
+    Phone=data["Phone"]
+    Email=data['Email']
+    Message=data['Message']
    
-    new_data=Event()
+    new_data=Contact(user_id=user_id,FirstName=FirstName,LastName=LastName,Phone=Phone,Email=Email,Message=Message)
     
     try:
 
@@ -362,7 +374,28 @@ def Event():
             'msg':"Error connecting to db or server"
         }),404
     
+@app.get("/api/contacts")
+def  all_Contact():
+    contact=Contact.query.all()
+    print(contact)
+    output=[]
+    for contact in contact:
+        contactData={}
+       
+        contactData['contact-id'] = contact.user_id
+        contactData['Fname']=contact.FirstName
+        contactData['Lname']=contact.LastName
+        contactData['Phone']=contact.Phone
+        contactData['Email']=contact.Email
+        contactData['Message']=contact.Message
+        
+        output.append(eventData)
 
+    return jsonify(
+        {
+            'status':200,'event':output
+        }
+    ),200
 @app.post("/api/appointment")
 def appointment():  
     data=request.get_json()
@@ -392,6 +425,30 @@ def appointment():
             "body-error":e
         }),404
     
+@app.get("/api/getappointment/<public_id>")
+def  getAppointment(public_id):
+    
+    Appoint=Appointment.query.filter_by(user_id=public_id).first()
+    if not Appoint:
+        return jsonify({"msg":"No Appoint Found!"})
+  
+    
+    AppointData={}
+    AppointData['public_id'] = Appoint.usr_id
+    AppointData['name']=Appoint.User_Name
+    AppointData['Pastor']=Appoint.Pastor
+    AppointData['email']=Appoint.Email
+    AppointData['Date']=Appoint.Date
+    AppointData['time']=Appoint.ATime
+    AppointData['msg']=Appoint.Reason
+    
+
+    return jsonify(
+        {'status':200,
+            'Appointment':AppointData
+        }
+    ),200
+
     
 
 @app.get("/api/pastors")
