@@ -174,10 +174,11 @@ def create_user():
     email=data["email"]
     contact=data["contact"]
     password=data['password']
+    admin=data['admin']
 
     hashed_password=generate_password_hash(password,method='sha256')
     print(data)
-    new_user=User(public_id=str(uuid.uuid4()),name=name,password=hashed_password,email=email,contact=contact,admin=False)
+    new_user=User(public_id=str(uuid.uuid4()),name=name,password=hashed_password,email=email,contact=contact,admin=admin)
     try:
 
       
