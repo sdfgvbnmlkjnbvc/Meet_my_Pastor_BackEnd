@@ -251,22 +251,22 @@ def create_testimony():
 
 @app.get("/api/testimonies")
 def  all_testimonies():
-    pastor=Testimonies.query.all()
+    Testimonz=Testimonies.query.all()
     print(pastor)
     output=[]
-    for pastor in pastor:
-        pastorData={}
-        pastorData['user_id'] = pastor.user_id
-        pastorData['Pastor_id'] = pastor.Pastor_id
-        pastorData['name']=pastor.Pastor_Name
-        pastorData['title']=pastor.title
-        pastorData['Contact']=pastor.Contact
-        pastorData['Image']=pastor.Image
-        output.append(pastorData)
+    for Testimony in Testimonz:
+        TestimonyData={}
+        TestimonyData['id'] = Testimony.id
+        TestimonyData['testimony_id'] = Testimony.testimony_id
+        TestimonyData['name']=Testimony.Testimony_Name
+        TestimonyData['title']=Testimony.title
+        TestimonyData['Contact']=Testimony.Contact
+        TestimonyData['Image']=Testimony.Image
+        output.append(TestimonyData)
 
     return jsonify(
         {
-            'status':200,'pastor':output
+            'status':200,'Testimony':output
         }
     ),200
     
