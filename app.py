@@ -252,7 +252,7 @@ def create_testimony():
 @app.get("/api/testimonies")
 def  all_testimonies():
     Testimonz=Testimonies.query.all()
-    print(pastor)
+    print(Testimonz)
     output=[]
     for Testimony in Testimonz:
         TestimonyData={}
