@@ -258,10 +258,10 @@ def  all_testimonies():
         TestimonyData={}
         TestimonyData['id'] = Testimony.id
         TestimonyData['testimony_id'] = Testimony.testimony_id
-        TestimonyData['name']=Testimony.Testimony_Name
-        TestimonyData['title']=Testimony.title
-        TestimonyData['Contact']=Testimony.Contact
-        TestimonyData['Image']=Testimony.Image
+        TestimonyData['name']=Testimony.name
+        TestimonyData['message']=Testimony.message
+        TestimonyData['date']=Testimony.date
+        TestimonyData['Image']=Testimony.image
         output.append(TestimonyData)
 
     return jsonify(
