@@ -310,8 +310,8 @@ def  all_events():
         eventData={}
        
         eventData['event_id'] = event.event_id
-        eventData['name']=event.event_Name
-        eventData['Image']=event.Image
+        eventData['name']=event.name
+        eventData['Image']=event.image
         eventData['date']=event.date
         eventData['time']=event.time
         eventData['location']=event.location
