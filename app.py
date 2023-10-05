@@ -119,15 +119,17 @@ class Testimonies(db.Model):
     id=db.Column(db.Integer,primary_key=True)
     testimony_id=db.Column(db.String(50))
     image=db.Column(db.String(50))
+    title=db.Column(db.String(50))
     name=db.Column(db.String(50))
     date=db.Column(db.String(50))
     message=db.Column(db.String(100))
 
     
-    def __init__(self,testimony_id,image,name,date,message):
+    def __init__(self,testimony_id,image,title,name,date,message):
         self.name=name
         self.image=image
         self.date=date
+        self.title=title
         self.message=message
         self.testimony_id=testimony_id
 
@@ -226,13 +228,14 @@ def login():
 def create_testimony():
     data=request.get_json() 
     name=data["name"]
+    title=data["title"]
     message=data["message"]
     date=data['date']
     Image=data['Image']
 
 
     print(data)
-    tesimony=Testimonies(testimony_id=str(uuid.uuid4()),name=name,message=message,date=date,image=Image)
+    tesimony=Testimonies(testimony_id=str(uuid.uuid4()),name=name,message=message,date=date,title=title,image=Image)
     try:
 
       
@@ -259,6 +262,7 @@ def  all_testimonies():
         TestimonyData['id'] = Testimony.id
         TestimonyData['testimony_id'] = Testimony.testimony_id
         TestimonyData['name']=Testimony.name
+        TestimonyData['title']=Testimony.title
         TestimonyData['message']=Testimony.message
         TestimonyData['date']=Testimony.date
         TestimonyData['Image']=Testimony.image
