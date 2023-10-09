@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "Meet_MY_pastor_Collection",
-    "dateExported": "2023-09-26T09:43:26.872Z",
+    "dateExported": "2023-10-09T16:56:25.913Z",
     "version": "1.1",
     "folders": [],
     "requests": [
@@ -10,11 +10,11 @@
             "colId": "f3c7d070-59f0-480f-b77e-5688ea1236d1",
             "containerId": "",
             "name": "Register",
-            "url": "https://meet-my-pastor.onrender.com/api/user",
+            "url": "http://127.0.0.1:5000/api/user",
             "method": "POST",
             "sortNum": 10000,
             "created": "2023-09-05T08:28:26.569Z",
-            "modified": "2023-09-22T06:04:20.808Z",
+            "modified": "2023-10-09T15:00:07.522Z",
             "headers": [],
             "params": [],
             "body": {
@@ -114,11 +114,11 @@
             "colId": "f3c7d070-59f0-480f-b77e-5688ea1236d1",
             "containerId": "",
             "name": "Event",
-            "url": "https://meet-my-pastor.onrender.com/api/Event",
+            "url": "https://meet-my-pastor.onrender.com/api/events",
             "method": "GET",
             "sortNum": 90000,
             "created": "2023-09-22T12:11:34.730Z",
-            "modified": "2023-09-22T12:11:48.801Z",
+            "modified": "2023-10-04T17:53:57.626Z",
             "headers": [],
             "params": [],
             "tests": []
@@ -132,12 +132,12 @@
             "method": "POST",
             "sortNum": 100000,
             "created": "2023-09-22T12:12:02.394Z",
-            "modified": "2023-09-26T09:11:49.397Z",
+            "modified": "2023-10-04T17:46:55.568Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n\"name\" :\"\",\n\"image\":\"\",\n\"date\":\"\",\n\"time\":\"\",\n\"location\":\"\",\n\"eventDescription\":\"\"\n\n\n}",
+                "raw": "{\n   \"user-id\": \"5f8e7fc5-1508-4bca-8706-041193680363\",\n\"name\" :\"cHECK\",\n\"image\":\"https://lh3.googleusercontent.com/pw/ADCreHeb-Fq5oR6wMcItDS6GuxhKjxxjTBxr42NN3sAHwdk2QFQDQkUsWT5TeSRn9s-8t3faT2dq2Sh5C-79eqwACBpZ-zS4uxEWuP9ZPo29Sk35hifUG0C8v_xC6ayWHZA2WbDJDXMslek0wv2eBNKua8nfTiSMcjMIAit6l8md7gdX-jKqJzlzdMp4b-zJO5tus7UF7QlNGaFw3j39gFwmmCrCLPtpatzXrBPAN9ywQcbA04mrL01E0eoLTWuUjh3Kp_9jPIwdiVDQnGrePAKMyuctmTOA2JzAS7Iv2TZPzZP_XIf16Y_noyvQVq4P45SSuma_8gEZToVNFyRBc8RudHsjOFCK0DGsSQDt-JHTeYWbsy9_IH6sr4LWKrNg5sad9h-8yLcWhE2Z4pXgxevkg6G5xgfwa_TYZ-jpfSjng5FcGBcF9xkf1q4XJtbl-nMLzlWNmaFrnLy42IGXWCH7vKv2K5rkB6hAa0hqhSU7h9tIRP-RqyU_wI23JNPoaFHh2fPLwRVHOg8efMNKJIKoGn234z5e-517cX5XjbyaxTMq0ZlHUzpeeGynOksA2RVpgUfMS1BUyCUOpu1i0cr25jjs0SUNRs1da3OuRzCgMp0_0URzdUDPrWRUMEnPpRtRk-a5nCXqxNv5_QXKIQnl4s1ktJmr1gTYz7ARXdP4UJvs-MIxByEt-BEYdBIoMpSIP7UFxj9_bN36kbjMztwMeiaCAQgHnXp2duyPs5xrc9Ha413bvO9hoPPSu1u15rj7_rNW1cKuBjaQ9ZKHHDgvPfaVfGJolXKWSI21a_x08nZJXZnrwpmJgnA0sr7IRyGlqgTFLk9lYunDssc_k9b3lqNT9VtNUCMNsMvulKbxqLxW6KBsPIA_eevWYN_uzRZUgeH7tSQLBZH8OcFYPsjton__JHYvZlCRTPjHhR8tqn-8mO2eJF52q4z8KbPeEBp-cB8nlmQ1q4xmnaeV3PS7qkSQbcqeq0BZ=w664-h885-s-no?authuser=1\",\n\"date\":\"23-45-098\",\n\"time\":\"12:34\",\n\"location\":\"Accra\",\n\"eventDescription\":\"Hello\"\n\n\n}",
                 "form": []
             },
             "tests": []
@@ -151,7 +151,7 @@
             "method": "GET",
             "sortNum": 110000,
             "created": "2023-09-22T12:14:34.244Z",
-            "modified": "2023-09-26T09:04:52.442Z",
+            "modified": "2023-10-06T10:44:51.967Z",
             "headers": [],
             "params": [],
             "tests": []
@@ -165,12 +165,12 @@
             "method": "POST",
             "sortNum": 130000,
             "created": "2023-09-22T12:15:29.937Z",
-            "modified": "2023-09-26T09:06:31.355Z",
+            "modified": "2023-10-06T11:37:30.978Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "\n{\n  \"name\":\"\",\n  \"message\":\"\",\n  \"date\":\"\",\n  \"Image\":\"\"\n}",
+                "raw": "\n{\n  \"user-id\": \"5f8e7fc5-1508-4bca-8706-041193680363\",\n      \"title\":\"title\",\n  \"name\":\"Check\",\n  \"message\":\"Hello world\",\n  \"date\":\"23-123-4\",\n  \"Image\":\"wefgsporhfs\"\n}\n      ",
                 "form": []
             },
             "tests": []
