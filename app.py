@@ -90,7 +90,7 @@ class Appointment(db.Model):
 
 class Contact(db.Model):
     id=db.Column(db.Integer,primary_key=True)
-    user_id=db.Column(db.String(50),db.ForeignKey('user.public_id'))
+    user_id=db.Column(db.String(50))
     FirstName=db.Column(db.String(50))
     LastName=db.Column(db.String(50))
     Phone=db.Column(db.String(50))
