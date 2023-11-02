@@ -364,7 +364,7 @@ def contact():
     Email=data['Email']
     Message=data['Message']
    
-    new_data=Contact(FirstName=FirstName,LastName=LastName,Phone=Phone,Email=Email,Message=Message)
+    new_data=Contact(user_id=str(uuid.uuid4()),FirstName=FirstName,LastName=LastName,Phone=Phone,Email=Email,Message=Message)
     
     try:
 
@@ -401,6 +401,8 @@ def  all_Contact():
             'status':200,'event':output
         }
     ),200
+
+
 @app.post("/api/appointment")
 def appointment():  
     data=request.get_json()
