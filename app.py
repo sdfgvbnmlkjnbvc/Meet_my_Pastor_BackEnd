@@ -364,7 +364,7 @@ def contact():
     Email=data['Email']
     Message=data['Message']
    
-    new_data=Contact(user_id=str(uuid.uuid4()),FirstName=FirstName,LastName=LastName,Phone=Phone,Email=Email,Message=Message)
+    new_data=Contact(FirstName=FirstName,LastName=LastName,Phone=Phone,Email=Email,Message=Message)
     
     try:
 
