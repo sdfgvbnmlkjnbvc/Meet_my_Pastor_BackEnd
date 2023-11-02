@@ -355,7 +355,7 @@ def create_pastor():
         }),404
 
 @app.post("/api/contact")
-def Contact():
+def contact():
     data=request.get_json()
     
     FirstName=data["FirstName"]
