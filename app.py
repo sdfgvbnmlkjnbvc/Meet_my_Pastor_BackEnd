@@ -357,14 +357,14 @@ def create_pastor():
 @app.post("/api/contact")
 def Contact():
     data=request.get_json()
-    user_id=data["user-id"]
+    
     FirstName=data["FirstName"]
     LastName=data["LastName"]
     Phone=data["Phone"]
     Email=data['Email']
     Message=data['Message']
    
-    new_data=Contact(user_id=user_id,FirstName=FirstName,LastName=LastName,Phone=Phone,Email=Email,Message=Message)
+    new_data=Contact(user_id=str(uuid.uuid4()),FirstName=FirstName,LastName=LastName,Phone=Phone,Email=Email,Message=Message)
     
     try:
 
