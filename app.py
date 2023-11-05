@@ -394,7 +394,7 @@ def  all_Contact():
         contactData['Email']=contact.Email
         contactData['Message']=contact.Message
         
-        output.append(eventData)
+        output.append(contactData)
 
     return jsonify(
         {
@@ -436,12 +436,13 @@ def appointment():
 def  getAppointment(public_id):
     
     Appoint=Appointment.query.filter_by(user_id=public_id).first()
+    print(Appoint)
     if not Appoint:
         return jsonify({"msg":"No Appoint Found!"})
   
     
     AppointData={}
-    AppointData['public_id'] = Appoint.usr_id
+    AppointData['public_id'] = Appoint.user_id
     AppointData['name']=Appoint.User_Name
     AppointData['Pastor']=Appoint.Pastor
     AppointData['email']=Appoint.Email
@@ -523,3 +524,7 @@ def get_one(public_id):
     ),200
 
 
+
+
+# if __name__=='__main__':
+#   app.run(debug=True,host='127.0.0.1',port=8080)
