@@ -3,7 +3,7 @@
 |Status    |    Method    |            EndPoint    |
 | :-----:  | :----------: | :--------------------: |
 | STARTED  |     post     | base_URL+create_user   |
-| STARTED  |     GET      |  base_URL+fetch_alluser|
+| STARTED  |     GET      | base_URL+fetch_alluser |
 |  STARTED |     POST     | base_URL+login         |
 | STARTED  |     GET      | base_URL+user          |
 |  STARTED |     post     | base_URL+register      |
@@ -84,8 +84,16 @@
 
 
  
-   
+#admin Credentials
+ - email: Mireille@admin.com
+ - password: Admin@1234 
+
+#User Credentials
+ - email: Mireille@user.com
+ - password: User@1234 
+
 use python to run commmand to create db
 from app import db,app
 app.app_context().push()
 db.create_all()
+
