@@ -434,7 +434,7 @@ def appointment():
     
 @app.get("/api/getappointment/<public_id>")
 def  getAppointment(public_id):
-    
+    output=[]
     Appoint=Appointment.query.filter_by(user_id=public_id).first()
     print(Appoint)
     if not Appoint:
@@ -450,14 +450,37 @@ def  getAppointment(public_id):
     AppointData['time']=Appoint.ATime
     AppointData['msg']=Appoint.Reason
     
+    output.append(AppointData)
 
     return jsonify(
         {'status':200,
-            'Appointment':AppointData
-        }
+            'Appointment':output}
     ),200
 
+@app.get("/api/getappointment")
+def Appointments(public_id):
+    output=[]
+    Appoint=Appointment.query.all()
+    # print(Appoint)
+    if not Appoint:
+        return jsonify({"msg":"No Appoint Found!"})
+  
     
+    AppointData={}
+    AppointData['public_id'] = Appoint.user_id
+    AppointData['name']=Appoint.User_Name
+    AppointData['Pastor']=Appoint.Pastor
+    AppointData['email']=Appoint.Email
+    AppointData['Date']=Appoint.Date
+    AppointData['time']=Appoint.ATime
+    AppointData['msg']=Appoint.Reason
+    
+    output.append(AppointData)
+
+    return jsonify(
+        {'status':200,
+            'Appointment':output}
+    ),200  
 
 @app.get("/api/pastors")
 def  all_pastors():
