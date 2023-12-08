@@ -465,17 +465,17 @@ def Appointments():
     if not Appoint:
         return jsonify({"msg":"No Appoint Found!"})
   
-    
-    AppointData={}
-    AppointData['public_id'] = Appoint.user_id
-    AppointData['name']=Appoint.User_Name
-    AppointData['Pastor']=Appoint.Pastor
-    AppointData['email']=Appoint.Email
-    AppointData['Date']=Appoint.Date
-    AppointData['time']=Appoint.ATime
-    AppointData['msg']=Appoint.Reason
-    
-    output.append(AppointData)
+    for appoint in Appoint:
+        AppointData={}
+        AppointData['public_id'] = appoint.user_id
+        AppointData['name']=appoint.User_Name
+        AppointData['Pastor']=appoint.Pastor
+        AppointData['email']=appoint.Email
+        AppointData['Date']=appoint.Date
+        AppointData['time']=appoint.ATime
+        AppointData['msg']=appoint.Reason
+        
+        output.append(AppointData)
 
     return jsonify(
         {'status':200,
