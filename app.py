@@ -458,7 +458,7 @@ def  getAppointment(public_id):
     ),200
 
 @app.get("/api/getappointment")
-def Appointments(public_id):
+def Appointments():
     output=[]
     Appoint=Appointment.query.all()
     # print(Appoint)
